@@ -4,70 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVE-1999-0334 Detail</title>
-    <link rel="stylesheet" href="detail.css">
+    <title>CVE Details</title>
+    <link rel="stylesheet" href="cvedetails.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>CVE-1999-0334 Detail</h1>
-        <div id="cveDetail">
-            <h2>Description</h2>
-            <p class="description">In Solaris 2.2 and 2.3, when fsck fails on startup, it allows a local user with
-                physical access to obtain root access.</p>
-            <h2>CVSS V2 Metrics</h2>
-            <table class="metrics-table">
-                <tr>
-                    <th>Severity:</th>
-                    <td>LOW</td>
-                </tr>
-                <tr>
-                    <th>Score:</th>
-                    <td>7.2</td>
-                </tr>
-                <tr>
-                    <th>Vector String:</th>
-                    <td>AV:L/AC:L/Au:N/C:C/I:C</td>
-                </tr>
-                <tr>
-                    <th colspan="2">Details</th>
-                </tr>
-                <tr>
-                    <td>Access Vector:</td>
-                    <td>LOCAL</td>
-                </tr>
-                <tr>
-                    <td>Access Complexity:</td>
-                    <td>LOW</td>
-                </tr>
-                <tr>
-                    <td>Authentication:</td>
-                    <td>NONE</td>
-                </tr>
-            </table>
-            <h2>CPE</h2>
-            <table class="cpe-table">
-                <tr>
-                    <th>Platform</th>
-                    <th>Compatible</th>
-                </tr>
-                <tr>
-                    <td>cpe:2.3:0 sun solaris x86</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>cpe:2.3:0 sun solaris x86_64</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>cpe:2.3:0 sun solaris sparc</td>
-                    <td>Yes</td>
-                </tr>
-            </table>
-            <p><b>For more information:</b> <a href="https://nvd.nist.gov/vuln-detail/CVE-1999-0334">National
-                    Vulnerability Database (NVD)</a></p>
-        </div>
-    </div>
+    <div id="cve-details"></div>
+
+    <script src="cvedetails.js"></script>
 </body>
 
 </html>

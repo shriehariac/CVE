@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
 
     function fetchAndUpdate(page, limit) {
-        fetch(`/fetchData?page=${page}&limit=${limit}`)
+        fetch(`http://localhost:3000/fetchData?page=${page}&limit=${limit}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             row.classList.add('clickable');
             row.addEventListener('click', () => {
                 if (cve && cve.cve && cve.cve.id) {
-                    const detailsURL = cve.cve.id;
-                    window.location.href = detailsURL;
+                    const detailsURL = `details.html?id=${cve.cve.id}`; // Assuming the details page is 'details.html'
+                    window.location.href = detailsURL; // Redirect to details page in the same tab
                 } else {
                     console.error('CVE ID not found in data:', cve);
                 }
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tableBody.appendChild(row);
         });
     }
+
 
     function updatePager(totalRows) {
         pager.innerHTML = '';

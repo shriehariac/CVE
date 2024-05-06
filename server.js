@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017';
 const dbName = 'SECURIN';
-const collectionName = 'SECURIN';
+const collectionName = 'CVE';
 
 app.use(cors());
 
@@ -43,21 +43,19 @@ MongoClient.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true 
             }
         });
 
-        app.get('/fetchCVEDetails', async (req, res) => {
+        app.get('/api/fetchCVEDetails', async (req, res) => {
             try {
                 const cveId = req.query.id;
                 if (!cveId) {
-                    res.status(400).json({ error: 'CVE ID is required' });
-                    return;
-                }
-                const cveDetails = await collection.findOne({ 'cve.id': cveId });
-
-                if (!cveDetails) {
-                    res.status(404).json({ error: 'CVE details not found' });
-                    return;
+                    return res.status(400).json({ error: 'CVE ID is required' });
                 }
 
-                res.json(cveDetails);
+                const cve = await collection.findOne({ '_id': cveId });
+                if (!cve) {
+                    return res.status(404).json({ error: 'CVE not found' });
+                }
+
+                res.json(cve);
             } catch (error) {
                 console.error('Error fetching CVE details:', error);
                 res.status(500).json({ error: 'Internal Server Error' });
@@ -72,4 +70,3 @@ MongoClient.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true 
         console.error('Error connecting to MongoDB:', error);
         process.exit(1);
     });
-
