@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017';
 const dbName = 'SECURIN';
-const collectionName = 'CVE';
+const collectionName = 'test';
 
 app.use(cors());
 
